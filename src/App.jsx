@@ -18,7 +18,7 @@ import StudySessionTracker from "./Components/Pages/StudySessionTracker/StudySes
 import Signup from "./Components/Pages/SignupPage/Signup";
 
 // Feature Components
-import Timetable from "./Components/features/Timetable";
+import Timetable from "./Components/features/Timetable.jsx";
 import TaskManager from "./Components/features/TaskManager";
 import Reminders from "./Components/features/Reminders";
 import ProgressTracker from "./Components/features/progressTracker";
