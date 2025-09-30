@@ -1,0 +1,991 @@
+/* Student Dashboard - Consolidated Styles */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --border-radius: 12px;
+  --border-radius-large: 20px;
+  --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --transition: all 0.3s ease;
+}
+
+.student-dashboard {
+  background: var(--secondary-gradient);
+  min-height: 100vh;
+  padding-top: 0;
+  position: relative;
+}
+
+.student-dashboard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-large);
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.welcome-message {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.streak-badge {
+  background: rgba(255, 193, 7, 0.1);
+  border: 2px solid rgba(255, 193, 7, 0.3);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: #856404;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.streak-badge i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Stats Cards */
+.stats-container {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.stats-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+  border-left: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  height: 100%;
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.stats-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stats-card.tasks {
+  border-left-color: var(--info-color);
+}
+
+.stats-card.progress {
+  border-left-color: var(--success-color);
+}
+
+.stats-card.reminders {
+  border-left-color: var(--warning-color);
+}
+
+.stats-card.schedule {
+  border-left-color: var(--danger-color);
+}
+
+.stats-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.stats-card:hover .stats-icon {
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+.stats-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stats-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Quick Actions */
+.quick-actions {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.quick-actions h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.action-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+  text-decoration: none;
+  color: inherit;
+}
+
+.action-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #667eea;
+  transition: var(--transition);
+}
+
+.action-card:hover .action-icon {
+  transform: scale(1.1);
+  color: #764ba2;
+}
+
+.action-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.action-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Recent Activity */
+.recent-activity {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.activity-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.activity-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+}
+
+.activity-item:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.activity-item:last-child {
+  margin-bottom: 0;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.activity-icon.task {
+  background: var(--info-color);
+}
+
+.activity-icon.progress {
+  background: var(--success-color);
+}
+
+.activity-icon.reminder {
+  background: var(--warning-color);
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.activity-time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Progress Cards */
+.progress-overview {
+  position: relative;
+  z-index: 1;
+}
+
+.progress-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+/* New: modern card used in Student.jsx */
+.card-modern {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+.card-modern .card-header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.bg-gradient-primary {
+  background: var(--primary-gradient) !important;
+}
+.card-modern .card-header h4,
+.card-modern .card-header h5 {
+  color: var(--text-primary);
+}
+
+/* Quick action tiles used in Student.jsx */
+.quick-action-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+  color: var(--text-primary);
+}
+.quick-action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+}
+.quick-action-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Upcoming tasks list */
+.task-item {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+.task-priority-indicator {
+  width: 8px;
+  height: 36px;
+  border-radius: 6px;
+  margin-right: 12px;
+}
+
+/* Profile progress ring */
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--secondary-gradient);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.progress-ring {
+  margin: 0 auto;
+  margin-top: 8px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: conic-gradient(#667eea var(--p, 0%), #e9ecef 0%);
+  display: grid;
+  place-items: center;
+}
+.progress-ring::before {
+  content: '';
+  width: 74px;
+  height: 74px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.04);
+}
+.progress-value {
+  position: absolute;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.progress-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.progress-bar-container {
+  background: #f8f9fa;
+  border-radius: 10px;
+  height: 12px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 10px;
+  transition: width 1s ease;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.fab i {
+  font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-header {
+    padding: 1.5rem;
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .stats-card,
+  .action-card {
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.75rem;
+  }
+  
+  .stats-icon {
+    font-size: 2rem;
+  }
+  
+  .stats-number {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .student-dashboard {
+    padding: 1rem;
+  }
+  
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .dashboard-header {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+  
+  .dashboard-subtitle {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .welcome-message {
+    font-size: 1.1rem;
+  }
+  
+  .streak-badge {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+  }
+  
+  /* Improve stats cards layout */
+  .stats-card {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .stats-icon {
+    font-size: 2rem;
+  }
+  
+  .stats-value {
+    font-size: 1.75rem;
+  }
+  
+  /* Better quick actions layout */
+  .quick-action-card {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .quick-action-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Stack sidebar content */
+  .row > .col-lg-4 {
+    margin-top: 1rem;
+  }
+  
+  /* Improve card spacing */
+  .card-modern {
+    margin-bottom: 1rem;
+  }
+  
+  .fab {
+    width: 52px;
+    height: 52px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .fab i {
+    font-size: 1.3rem;
+  }
+  
+  /* Better touch targets */
+  .task-item,
+  .quick-action-card,
+  .reminder-item {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 576px) {
+  .student-dashboard {
+    padding: 0.5rem;
+  }
+  
+  .container-fluid {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .dashboard-header {
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+  
+  .dashboard-subtitle {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+  
+  .welcome-message {
+    font-size: 1rem;
+  }
+  
+  .streak-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+  
+  /* Stats cards mobile */
+  .stats-card {
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .stats-value {
+    font-size: 1.75rem;
+  }
+  
+  .stats-title {
+    font-size: 0.9rem;
+  }
+  
+  .stats-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  /* Quick actions mobile */
+  .quick-action-card {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .quick-action-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.75rem;
+  }
+  
+  /* Task items mobile */
+  .task-item {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .task-priority-indicator {
+    width: 6px;
+    height: 30px;
+  }
+  
+  /* Profile section mobile */
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+  
+  .progress-ring {
+    width: 76px;
+    height: 76px;
+  }
+  
+  .progress-ring::before {
+    width: 62px;
+    height: 62px;
+  }
+  
+  /* Activity items mobile */
+  .activity-item {
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .activity-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  /* Reminder items mobile */
+  .reminder-item {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+  }
+  
+  /* Next class mobile */
+  .class-details {
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  
+  .class-details p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Card headers mobile */
+  .card-header h4,
+  .card-header h5 {
+    font-size: 1rem;
+  }
+  
+  .progress-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-dashboard {
+    padding: 0.25rem;
+  }
+  
+  .container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .dashboard-header {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.25rem;
+  }
+  
+  .dashboard-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .stats-card,
+  .card-modern,
+  .quick-action-card,
+  .task-item {
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+  
+  .stats-icon-wrapper {
+    margin-bottom: 0.5rem;
+  }
+  
+  .stats-value {
+    font-size: 1.5rem;
+  }
+  
+  .quick-action-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .card-header {
+    padding: 0.75rem;
+  }
+  
+  .card-body {
+    padding: 0.75rem;
+  }
+  
+  .action-title {
+    font-size: 0.95rem;
+  }
+  
+  .action-description {
+    font-size: 0.8rem;
+  }
+  
+  /* Make buttons more touch-friendly */
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-sm {
+    min-height: 36px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* High DPI Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .stats-card,
+  .action-card,
+  .activity-card,
+  .progress-card {
+    border: 0.5px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .student-dashboard {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+  
+  .dashboard-header,
+  .stats-card,
+  .action-card,
+  .activity-card,
+  .progress-card,
+  .card-modern,
+  .quick-action-card,
+  .task-item {
+    background: #1f1f1f;
+    color: #f1f1f1;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .dashboard-title,
+  .stats-number,
+  .action-title,
+  .activity-title {
+    color: #ffffff;
+  }
+  
+  .dashboard-subtitle,
+  .stats-label,
+  .action-description,
+  .activity-time {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .progress-ring::before { background: #1f1f1f; }
+  
+  .reminder-item:hover {
+    background: rgba(255, 193, 7, 0.15);
+  }
+  
+  .class-details {
+    background: rgba(40, 167, 69, 0.15);
+    border-color: #28a745;
+  }
+}
+
+/* Activity Timeline */
+.activity-item {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.activity-dot {
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Reminder Cards */
+.reminder-item {
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.reminder-item:hover {
+  background: rgba(255, 193, 7, 0.1);
+  transform: translateX(4px);
+}
+
+.reminder-item .badge {
+  animation: pulse-warning 2s infinite;
+}
+
+@keyframes pulse-warning {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Next Class Card */
+.next-class-info {
+  text-align: center;
+}
+
+.class-details {
+  background: rgba(40, 167, 69, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  border-left: 4px solid #28a745;
+  margin-top: 0.75rem;
+}
+
+.class-details p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Enhanced gradients for card headers */
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%) !important;
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+/* Print Styles */
+@media print {
+  .fab,
+  .quick-actions {
+    display: none;
+  }
+  
+  .student-dashboard {
+    background: white;
+  }
+  
+  .stats-card,
+  .action-card,
+  .activity-card,
+  .progress-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}

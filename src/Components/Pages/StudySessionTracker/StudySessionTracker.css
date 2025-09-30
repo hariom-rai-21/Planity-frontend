@@ -1,0 +1,56 @@
+.study-tracker {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.study-tracker .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  background-color: #fdfdfd;
+  transition: transform 0.2s ease;
+}
+
+.study-tracker .card:hover {
+  transform: scale(1.01);
+}
+
+.study-tracker h2 {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.study-tracker h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #198754;
+}
+
+.study-tracker input[type="text"] {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.study-tracker button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.study-tracker .list-group-item {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+.study-tracker .list-group-item strong {
+  color: #0d6efd;
+}
+
+.study-tracker .list-group-item em {
+  color: #6c757d;
+}

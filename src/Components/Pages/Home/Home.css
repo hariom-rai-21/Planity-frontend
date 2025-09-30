@@ -1,0 +1,129 @@
+/* src/components/Home.css */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.navbar {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
+}
+
+
+.nav-link:hover {
+  color: #ffd700 !important;
+}
+
+/* Hero section */
+.hero {
+  height: 100vh;
+  background: url('https://image-tc.galaxy.tf/wijpeg-7eacs92jhacpkfm7jg7qu74uj/diary-planning_wide.jpg?crop=0%2C52%2C1000%2C563') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* transparent dark overlay for readability */
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* transparent white background */
+  border-radius: 10px;
+}
+
+
+.hero h1 {
+  font-size: 3.5rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+}
+
+.about img {
+  border-radius: 12px;
+  max-height: 400px;
+  object-fit: contain;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.features .card-body h1 {
+  font-size: 2.5rem;
+  color: #FFFFFF;
+}
+
+.features .card-title {
+  font-weight: 600;
+}
+
+.footer {
+  background: #222;
+  font-size: 0.95rem;
+}
+
+.btn-light {
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+}
+/* Hover dropdown */
+.navbar .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* Optional: removes the small gap */
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.navbar .nav-link {
+  color: black !important;
+}
+.custom-navbar {
+  background-color: #ffffff !important; /* or any hex/RGB/color name */
+}
