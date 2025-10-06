@@ -18,10 +18,10 @@ import StudySessionTracker from "./Components/Pages/StudySessionTracker/StudySes
 import Signup from "./Components/Pages/SignupPage/Signup";
 
 // Feature Components
-import Timetable from "./Components/features/Timetable.jsx";
-import TaskManager from "./Components/features/TaskManager";
-import Reminders from "./Components/features/Reminders";
-import ProgressTracker from "./Components/features/progressTracker";
+import Timetable from "./Components/Features/Timetable.jsx";
+import TaskManager from "./Components/Features/TaskManager.jsx";
+import Reminders from "./Components/Features/Reminders.jsx";
+import ProgressTracker from "./Components/Features/progressTracker.jsx";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
