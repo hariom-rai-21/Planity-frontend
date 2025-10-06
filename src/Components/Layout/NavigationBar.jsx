@@ -4,7 +4,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaSignOutAlt, FaBook, FaTasks, FaClock, FaChartLine, FaBell, FaHome, FaBookOpen } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import './NavigationBar.css';
-import logo from '../../Assets/logo2.png';
+// Import logo as a URL
+import logo from '../../Assets/logo2.png?url';
 
 const NavigationBar = () => {
   const [user, setUser] = useState(null);
