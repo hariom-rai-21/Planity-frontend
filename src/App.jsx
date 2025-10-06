@@ -19,7 +19,7 @@ import Signup from "./Components/Pages/SignupPage/Signup";
 
 // Feature Components
 import Timetable from "./Components/Features/Timetable.jsx";
-import TaskManager from "./Components/Features/TaskManager.jsx";
+import TaskManager from "./Components/Features/Taskmanager.jsx";
 import Reminders from "./Components/Features/Reminders.jsx";
 import ProgressTracker from "./Components/Features/progressTracker.jsx";
 
