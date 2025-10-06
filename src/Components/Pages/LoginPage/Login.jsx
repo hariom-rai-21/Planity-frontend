@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faUser, 
-  faLock, 
-  faEye, 
-  faEyeSlash, 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faLock,
+  faEye,
+  faEyeSlash,
   faSignInAlt,
   faUserPlus,
-  faGraduationCap
-} from '@fortawesome/free-solid-svg-icons';
-import { toast } from 'react-toastify';
+  faGraduationCap,
+} from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 import apiService from "../../../services/api";
 import "./Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +27,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
       navigate("/student");
@@ -36,42 +35,41 @@ const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    
-    // Clear error when user starts typing
+
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ""
+        [name]: "",
       }));
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email";
     }
-    
+
     if (!formData.password) {
       newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       toast.error("Please fix the errors below");
       return;
@@ -81,20 +79,19 @@ const Login = () => {
 
     try {
       const response = await apiService.login(formData);
-      
+
       if (response.success) {
-        // Store user data and token in localStorage
         const userData = {
           ...response.data.user,
-          token: response.data.token
+          token: response.data.token,
         };
-        
+
         localStorage.setItem("loggedInUser", JSON.stringify(userData));
-        
+
         if (rememberMe) {
           localStorage.setItem("rememberUser", formData.email);
         }
-        
+
         toast.success(`Welcome back, ${response.data.user.name}!`);
         navigate("/student");
       }
@@ -111,7 +108,7 @@ const Login = () => {
       <div className="login-background">
         <div className="login-particles"></div>
       </div>
-      
+
       <div className="container-fluid">
         <div className="row min-vh-100">
           {/* Left Side - Branding */}
@@ -159,35 +156,39 @@ const Login = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="login-form">
+                  {/* Email */}
                   <div className="form-group">
                     <label className="form-label">Email Address</label>
-                    <div className="input-group">
+                    <div className="input-group custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faUser} />
                       </span>
                       <input
                         type="email"
                         name="email"
-                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        className={`form-control ${errors.email ? "is-invalid" : ""}`}
                         placeholder="Enter your email"
                         value={formData.email}
                         onChange={handleChange}
                         disabled={loading}
                       />
                     </div>
-                    {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                    {errors.email && (
+                      <div className="invalid-feedback">{errors.email}</div>
+                    )}
                   </div>
 
+                  {/* Password */}
                   <div className="form-group">
                     <label className="form-label">Password</label>
-                    <div className="input-group">
+                    <div className="input-group custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faLock} />
                       </span>
                       <input
                         type={showPassword ? "text" : "password"}
                         name="password"
-                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                        className={`form-control ${errors.password ? "is-invalid" : ""}`}
                         placeholder="Enter your password"
                         value={formData.password}
                         onChange={handleChange}
@@ -201,9 +202,12 @@ const Login = () => {
                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                       </button>
                     </div>
-                    {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+                    {errors.password && (
+                      <div className="invalid-feedback">{errors.password}</div>
+                    )}
                   </div>
 
+                  {/* Remember Me Only */}
                   <div className="form-group form-options">
                     <div className="form-check">
                       <input
@@ -217,11 +221,9 @@ const Login = () => {
                         Remember me
                       </label>
                     </div>
-                    <a href="#" className="forgot-link">
-                      Forgot Password?
-                    </a>
                   </div>
 
+                  {/* Submit */}
                   <button
                     type="submit"
                     className="btn btn-gradient btn-lg w-100 mb-3"

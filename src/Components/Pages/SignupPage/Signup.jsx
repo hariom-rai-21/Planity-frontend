@@ -204,7 +204,7 @@ const Signup = () => {
                 <form onSubmit={handleSubmit} className="signup-form">
                   <div className="form-group">
                     <label className="form-label">Full Name</label>
-                    <div className="input-group">
+                    <div className="custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faUser} />
                       </span>
@@ -223,7 +223,7 @@ const Signup = () => {
 
                   <div className="form-group">
                     <label className="form-label">Email Address</label>
-                    <div className="input-group">
+                    <div className="custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </span>
@@ -242,7 +242,7 @@ const Signup = () => {
 
                   <div className="form-group">
                     <label className="form-label">Class/Grade</label>
-                    <div className="input-group">
+                    <div className="custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faSchool} />
                       </span>
@@ -271,7 +271,7 @@ const Signup = () => {
 
                   <div className="form-group">
                     <label className="form-label">Password (Password must be  of 6 mix characters long)</label>
-                    <div className="input-group">
+                    <div className="custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faLock} />
                       </span>
@@ -316,7 +316,7 @@ const Signup = () => {
 
                   <div className="form-group">
                     <label className="form-label">Confirm Password</label>
-                    <div className="input-group">
+                    <div className="custom-input-group">
                       <span className="input-icon">
                         <FontAwesomeIcon icon={faLock} />
                       </span>
